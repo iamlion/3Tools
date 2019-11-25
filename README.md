@@ -15,18 +15,18 @@ brew install unzip;
 
 #### 1.  打开软件，点击"**导入iPA**"，选择需要重签名的iPA应用包，导入后软件会自动解析iPA包获取信息。
 
-<img src="./md-assets/1.png" style="width:40%;" />
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/1.png" style="width:40%;" />
 
 
 #### 2. 点击应用描述文件下的"**更新**"按钮，更换新的应用描述文件，
 
-![图片](https://uploader.shimo.im/f/fg4aaSgD6mURSx8D.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/2.png" style="width:40%;" />
 
 
 
 #### 3.  如果存在拓展应用，并且向重签拓展应用的描述文件，点击"**更新**"按钮，如果不想更新拓展应用的描述文件，软件将不会对拓展应用进行重签名。
 
-![图片](https://uploader.shimo.im/f/Vy1TFiZT5xwemCHN.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/3.png" style="width:40%;" />
 
 #### 4.  确认"签名证书"，描述文件一定要找到匹配的发布证书进行重签名，否则重签名后的应用依旧失败。（**如果你很确认你本地的证书没有问题的话，你可以跳过这一步**）
 
@@ -39,7 +39,7 @@ brew install unzip;
 security cms -D -i 新描述文件的路径
 ```
 
-![图片](https://uploader.shimo.im/f/uE1XojZrfucmskQJ.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/4.png" style="width:40%;" />
 
 
 **4.2 新建一个 "test.cer" 文件，复制以下内容到文件中**
@@ -52,34 +52,34 @@ security cms -D -i 新描述文件的路径
 
 **4.3 右键 "test.cer" 文件，点击快速查看**
 
-![图片](https://uploader.shimo.im/f/EMWpfjliHHULfsut.png!thumbnail)   
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/5.png" style="width:40%;" />
 
 **查看序列号**
 
-  ![图片](https://uploader.shimo.im/f/WH4eQnmZUfgvxv45.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/6.png" style="width:40%;" />
 
 
 **4.4 打开"系统钥匙串"，查找重复的证书信息**
 
-![图片](https://uploader.shimo.im/f/eqEbM7P3z8sMlXIS.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/7.png" style="width:40%;" />
 
 **4.5 依次点击点击“显示简介”，找到和描述文件一致的序列号的证书**
 
-![图片](https://uploader.shimo.im/f/6hrKtp7GeFg5G4jY.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/8.png" style="width:40%;" />
 
 **4.6 查找到正确的证书后，向下滑动找到“SHA-1”指纹值**
 
-![图片](https://uploader.shimo.im/f/7sePtp5Gi50DiLlN.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/9.png" style="width:40%;" />
 
 **4.7 在签名工具中找到对应指纹值的证书后，重签名就可以成功了。**
 
-![图片](https://uploader.shimo.im/f/9uYq6ogGLJkzQoLg.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/10.png" style="width:40%;" />
 
 
 
 #### 5.  点击"**重签名**"按钮，稍等一会儿。
 
-![图片](https://uploader.shimo.im/f/01Wnd2vod3InpjK6.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/11.png" style="width:40%;" />
 
   
 
@@ -90,7 +90,7 @@ security cms -D -i 新描述文件的路径
 
 点击输出目录可以查找到历史生成的"iPA"列表
 
-![图片](https://uploader.shimo.im/f/DDrzOoWc8lcJ1Zj4.png!thumbnail)
+<img src="https://raw.githubusercontent.com/iamlion/3Tools/master/md-assets/12.png" style="width:40%;" />
 
 
 
