@@ -15,7 +15,7 @@ brew install unzip;
 
 #### 1.  打开软件，点击"**导入iPA**"，选择需要重签名的iPA应用包，导入后软件会自动解析iPA包获取信息。
 
-![图片](https://uploader.shimo.im/f/5qMI1zsLLgI0XXCT.png!thumbnail)
+<img src="./md-assets/1.png" style="width:40%;" />
 
 
 #### 2. 点击应用描述文件下的"**更新**"按钮，更换新的应用描述文件，
