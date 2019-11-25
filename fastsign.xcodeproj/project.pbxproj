@@ -1,0 +1,379 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B613A19A2374EFB0002C4929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B613A1992374EFB0002C4929 /* AppDelegate.m */; };
+		B613A19F2374EFB1002C4929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B613A19E2374EFB1002C4929 /* Assets.xcassets */; };
+		B613A1A22374EFB1002C4929 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B613A1A02374EFB1002C4929 /* Main.storyboard */; };
+		B613A1A52374EFB1002C4929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B613A1A42374EFB1002C4929 /* main.m */; };
+		B613A1AE2375107D002C4929 /* FSWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B613A1AD2375107D002C4929 /* FSWindowController.m */; };
+		B613A1B0237510E9002C4929 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B613A1AF237510E9002C4929 /* MainMenu.xib */; };
+		B613A1B42375124A002C4929 /* FSWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B613A1B32375124A002C4929 /* FSWindowController.xib */; };
+		B618724023860F8500C71575 /* epointfastsign.sh in Resources */ = {isa = PBXBuildFile; fileRef = B618723F23860F8500C71575 /* epointfastsign.sh */; };
+		B64458A9238A3A6E009E58DA /* FSCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = B613A1B7237556AA002C4929 /* FSCommand.m */; };
+		B6F07E6D237B873400C61E77 /* FSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F07E6C237B873400C61E77 /* FSFileManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B613A1952374EFB0002C4929 /* fastsign.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fastsign.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B613A1982374EFB0002C4929 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B613A1992374EFB0002C4929 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B613A19E2374EFB1002C4929 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B613A1A12374EFB1002C4929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B613A1A32374EFB1002C4929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B613A1A42374EFB1002C4929 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B613A1A62374EFB1002C4929 /* fastsign.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fastsign.entitlements; sourceTree = "<group>"; };
+		B613A1AC2375107D002C4929 /* FSWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSWindowController.h; sourceTree = "<group>"; };
+		B613A1AD2375107D002C4929 /* FSWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSWindowController.m; sourceTree = "<group>"; };
+		B613A1AF237510E9002C4929 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		B613A1B32375124A002C4929 /* FSWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FSWindowController.xib; sourceTree = "<group>"; };
+		B613A1B6237556AA002C4929 /* FSCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSCommand.h; sourceTree = "<group>"; };
+		B613A1B7237556AA002C4929 /* FSCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSCommand.m; sourceTree = "<group>"; };
+		B618723F23860F8500C71575 /* epointfastsign.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = epointfastsign.sh; sourceTree = "<group>"; };
+		B6F07E6B237B873400C61E77 /* FSFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSFileManager.h; sourceTree = "<group>"; };
+		B6F07E6C237B873400C61E77 /* FSFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSFileManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B613A1922374EFB0002C4929 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B613A18C2374EFB0002C4929 = {
+			isa = PBXGroup;
+			children = (
+				B613A1972374EFB0002C4929 /* fastsign */,
+				B613A1962374EFB0002C4929 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B613A1962374EFB0002C4929 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B613A1952374EFB0002C4929 /* fastsign.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B613A1972374EFB0002C4929 /* fastsign */ = {
+			isa = PBXGroup;
+			children = (
+				B613A1982374EFB0002C4929 /* AppDelegate.h */,
+				B613A1992374EFB0002C4929 /* AppDelegate.m */,
+				B613A19E2374EFB1002C4929 /* Assets.xcassets */,
+				B618723F23860F8500C71575 /* epointfastsign.sh */,
+				B613A1A62374EFB1002C4929 /* fastsign.entitlements */,
+				B613A1AC2375107D002C4929 /* FSWindowController.h */,
+				B613A1AD2375107D002C4929 /* FSWindowController.m */,
+				B613A1B32375124A002C4929 /* FSWindowController.xib */,
+				B613A1A32374EFB1002C4929 /* Info.plist */,
+				B613A1A42374EFB1002C4929 /* main.m */,
+				B613A1A02374EFB1002C4929 /* Main.storyboard */,
+				B613A1AF237510E9002C4929 /* MainMenu.xib */,
+				B613A1B523755691002C4929 /* shells */,
+				B6F07E6A237B871500C61E77 /* utils */,
+			);
+			path = fastsign;
+			sourceTree = "<group>";
+		};
+		B613A1B523755691002C4929 /* shells */ = {
+			isa = PBXGroup;
+			children = (
+				B613A1B6237556AA002C4929 /* FSCommand.h */,
+				B613A1B7237556AA002C4929 /* FSCommand.m */,
+			);
+			path = shells;
+			sourceTree = "<group>";
+		};
+		B6F07E6A237B871500C61E77 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				B6F07E6B237B873400C61E77 /* FSFileManager.h */,
+				B6F07E6C237B873400C61E77 /* FSFileManager.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B613A1942374EFB0002C4929 /* fastsign */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B613A1A92374EFB1002C4929 /* Build configuration list for PBXNativeTarget "fastsign" */;
+			buildPhases = (
+				B613A1912374EFB0002C4929 /* Sources */,
+				B613A1922374EFB0002C4929 /* Frameworks */,
+				B613A1932374EFB0002C4929 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fastsign;
+			productName = fastsign;
+			productReference = B613A1952374EFB0002C4929 /* fastsign.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B613A18D2374EFB0002C4929 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = zhudezhen;
+				TargetAttributes = {
+					B613A1942374EFB0002C4929 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = B613A1902374EFB0002C4929 /* Build configuration list for PBXProject "fastsign" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B613A18C2374EFB0002C4929;
+			productRefGroup = B613A1962374EFB0002C4929 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B613A1942374EFB0002C4929 /* fastsign */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B613A1932374EFB0002C4929 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B613A1B42375124A002C4929 /* FSWindowController.xib in Resources */,
+				B613A19F2374EFB1002C4929 /* Assets.xcassets in Resources */,
+				B613A1A22374EFB1002C4929 /* Main.storyboard in Resources */,
+				B618724023860F8500C71575 /* epointfastsign.sh in Resources */,
+				B613A1B0237510E9002C4929 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B613A1912374EFB0002C4929 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B64458A9238A3A6E009E58DA /* FSCommand.m in Sources */,
+				B613A1AE2375107D002C4929 /* FSWindowController.m in Sources */,
+				B6F07E6D237B873400C61E77 /* FSFileManager.m in Sources */,
+				B613A1A52374EFB1002C4929 /* main.m in Sources */,
+				B613A19A2374EFB0002C4929 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B613A1A02374EFB1002C4929 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B613A1A12374EFB1002C4929 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B613A1A72374EFB1002C4929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B613A1A82374EFB1002C4929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B613A1AA2374EFB1002C4929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = fastsign/fastsign.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZW95P3X8Q5;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = fastsign/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.epoint.fastsign;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		B613A1AB2374EFB1002C4929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = fastsign/fastsign.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZW95P3X8Q5;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = fastsign/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.epoint.fastsign;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B613A1902374EFB0002C4929 /* Build configuration list for PBXProject "fastsign" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B613A1A72374EFB1002C4929 /* Debug */,
+				B613A1A82374EFB1002C4929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B613A1A92374EFB1002C4929 /* Build configuration list for PBXNativeTarget "fastsign" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B613A1AA2374EFB1002C4929 /* Debug */,
+				B613A1AB2374EFB1002C4929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B613A18D2374EFB0002C4929 /* Project object */;
+}
