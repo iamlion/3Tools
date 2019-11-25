@@ -12,7 +12,7 @@
 //#import "FSSignListWindowController.h"
  #import <CommonCrypto/CommonDigest.h>
 
-@interface FSWindowController () <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate>
+@interface FSWindowController () <NSTableViewDelegate, NSTableViewDataSource, NSWindowDelegate, NSComboBoxDataSource, NSComboBoxDelegate>
 
 #pragma mark - 不可修改
 // 不可修改的bundleId显示标签
@@ -44,18 +44,20 @@
 // 重签名按钮
 @property (weak) IBOutlet NSButtonCell *reSignBtn;
 
+@property (weak) IBOutlet NSComboBox *signKeyListCombbox;
+@property (weak) IBOutlet NSTextField *signKeyIndeitfyLabel;
 #pragma mark - 数据源
 @property (nonatomic, strong) NSMutableArray *appexDataList;
 
 #pragma mark - 业务核心
 @property (nonatomic, strong) FSCommand *commond;
-
 @property (nonatomic, strong) NSString *targetPath;
 @property (nonatomic, strong) NSMutableDictionary *cache;
 @property (nonatomic, strong) NSString *trashTempPath;
 @property (nonatomic, strong) NSString *outputFilePath;
 @property (nonatomic, strong) NSString *applicaitonName;
 @property (nonatomic, strong) NSString *applicationMd5Path;
+@property (nonatomic, strong) NSMutableArray *signTeamDataList;
 
 // 新应用描述文件
 @property (nonatomic, strong) NSString *nearestAppMbPath;
@@ -89,6 +91,9 @@
     self.appmbIcon.wantsLayer = YES;
 
     self.window.delegate = self;
+    
+    // 初始化钥匙列表
+    [self initialCodeSigningList];
 }
 
 #pragma mark - 常用方法
@@ -177,6 +182,31 @@
 
     // x表示十六进制，%02X  意思是不足两位将用0补齐，如果多余两位则不影响
     return saveResult;
+}
+
+- (void)initialCodeSigningList
+{
+    NSString *rlt = [self.commond runCommand:@"security find-identity -v -p codesigning" args:nil];
+    NSArray *names = [rlt componentsSeparatedByString:@"\n"];
+    for (NSString *codesigning in names)
+    {
+        NSArray *keyNames = [codesigning componentsSeparatedByString:@"\""];
+        if (keyNames.count > 2)
+        {
+            NSString *keyName = [keyNames objectAtIndex:1];
+            NSString *identify = [keyNames objectAtIndex:0];
+            NSArray *identifys = [identify componentsSeparatedByString:@" "];
+            identify = [identifys objectAtIndex:3];
+            [self.signTeamDataList addObject:@{
+                @"label":keyName,
+                @"value":identify,
+            }];
+        }
+    }
+    self.signKeyListCombbox.dataSource = self;
+    self.signKeyListCombbox.delegate = self;
+    self.signKeyListCombbox.stringValue = [[self.signTeamDataList firstObject] objectForKey:@"label"];
+    self.signKeyIndeitfyLabel.stringValue = [[self.signTeamDataList firstObject] objectForKey:@"value"];
 }
 
 #pragma mark - NSTableViewDelegate, NSTableViewDataSource
@@ -305,6 +335,15 @@
     return _cache;
 }
 
+- (NSMutableArray *)signTeamDataList
+{
+    if (_signTeamDataList == nil)
+    {
+        _signTeamDataList = [NSMutableArray array];
+    }
+    return _signTeamDataList;
+}
+
 #pragma mark - 点击事件
 
 - (IBAction)onTapImportIPA:(id)sender {
@@ -325,6 +364,8 @@
         self.nearestAppMbPath = nil;
         self.nearestAppexMbPath = nil;
         self.ipaPath = nil;
+        self.signKeyListCombbox.stringValue = [[self.signTeamDataList firstObject] objectForKey:@"label"];
+        self.signKeyIndeitfyLabel.stringValue = [[self.signTeamDataList firstObject] objectForKey:@"value"];
         self.updateMobileProvisionBtn.title = @"更新";
         self.appmbIcon.layer.backgroundColor = [NSColor clearColor].CGColor;
        
@@ -349,6 +390,13 @@
             NSString *md5 = [self stringToMD5:path];
             NSString *target = [rootPath stringByAppendingPathComponent:md5];
             self.applicationMd5Path = target;
+            
+            // 如果存在同样的地址就删除
+            if ([[NSFileManager defaultManager] fileExistsAtPath:target] == YES)
+            {
+                // 移除垃圾文件
+                [[NSFileManager defaultManager] removeItemAtPath:self.applicationMd5Path error:nil];
+            }
             
             // 设置临时目录
             self.trashTempPath = [target stringByAppendingPathComponent:@"temps"];
@@ -383,7 +431,7 @@
             [FSFileManager createExsitDirectory:self.trashTempPath];
             
             // 2.1 获取 info.plist 信息
-            NSString *originInfoPlist = [target stringByAppendingPathComponent:@"info.plist"];
+            NSString *originInfoPlist = [target stringByAppendingPathComponent:@"Info.plist"];
             
             // 获取应用信息
             NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:originInfoPlist];
@@ -398,18 +446,15 @@
             // 获取应用描述文件地址
             __block NSString *mppath = [target stringByAppendingPathComponent:@"embedded.mobileprovision"];
             // 获取应用拓展分类信息
-            NSString *pluginspath = [target stringByAppendingPathComponent:@"PlugIns"];
-            NSArray<NSString *> *pluginNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:pluginspath error:nil];
-            self.appexDataList = nil;
-            for (NSString *name in pluginNames)
-            {
-                NSString *p = [pluginspath stringByAppendingPathComponent:name];
-                [self.appexDataList addObject:@{
-                    @"name":name,
-                    @"path":p,
-                    @"mb":[p stringByAppendingPathComponent:@"embedded.mobileprovision"]
-                }];
-            }
+            __weak __typeof(self) weakSelf = self;
+            weakSelf.appexDataList = nil;
+            [self recursivePath:target plugins:^(NSDictionary *info) {
+                NSMutableDictionary *itemDic = info.mutableCopy;
+                NSString *p = [itemDic objectForKey:@"path"];
+                [itemDic setValue:[p stringByAppendingPathComponent:@"embedded.mobileprovision"] forKey:@"mb"];
+                [weakSelf.appexDataList addObject:itemDic];
+            }];
+            
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -428,6 +473,7 @@
                 }
                 
                 [self.appexMobileProvisionList reloadData];
+                
                 
                 [self hideProgress];
             });
@@ -455,6 +501,26 @@
         path = [path stringByRemovingPercentEncoding];
         self.nearestAppMbPath = path;
         self.updateMobileProvisionBtn.title = @"已更新";
+        
+        // 解析签名证书
+        NSString *plistPath = [self.trashTempPath stringByAppendingString:@"temp-update-info.plist"];
+        [self.commond runCommand:[NSString stringWithFormat:@"security cms -D -i \"%@\" > \"%@\"", path, plistPath] args:nil];
+        
+//        NSDictionary *info = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+//        NSString *TeamName = [info objectForKey:@"TeamName"];
+//        if (TeamName.length > 0)
+//        {
+//            for (NSDictionary *dic in self.signTeamDataList)
+//            {
+//                NSString *key = [dic objectForKey:@"label"];
+//                if ([key containsString:TeamName])
+//                {
+//                    self.signKeyListCombbox.stringValue = key;
+//                    self.signKeyIndeitfyLabel.stringValue = [dic objectForKey:@"value"];
+//                    return ;
+//                }
+//            }
+//        }
     }
 }
 
@@ -510,6 +576,8 @@
     __weak __typeof(self) weakSelf = self;
     __block NSString *appName = self.appNameLabel.stringValue;
     __block NSString *appVersion = self.appVersionLabel.stringValue;
+    // 获取当前选择的签名证书
+    __block NSString *teamName = self.signKeyIndeitfyLabel.stringValue;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
         // 修改名字和版本号
@@ -542,7 +610,7 @@
             NSString *targetPath = [dic objectForKey:@"path"];
             if (newAppexMbPath.length > 0)
             {
-                [weakSelf reSignFullAction:targetPath newMpPath:newAppexMbPath name:name teamName:nil];
+                [weakSelf reSignFullAction:targetPath newMpPath:newAppexMbPath name:name teamName:teamName];
             }
         }];
         
@@ -550,7 +618,7 @@
         fileName = [[fileName componentsSeparatedByString:@"."] firstObject];
         
         // 替换新的描述文件
-        [self reSignFullAction:self.targetPath newMpPath:self.nearestAppMbPath name:fileName teamName:nil];
+        [self reSignFullAction:self.targetPath newMpPath:self.nearestAppMbPath name:fileName teamName:teamName];
         
         // 获取当前时间
         NSDate *now = [NSDate new];
@@ -561,7 +629,7 @@
         [self.commond runCommand:[NSString stringWithFormat:@"cd %@;cd ../../;zip -r \"./New.ipa\" \"./Payload\";mv ./New.ipa %@", self.targetPath, newIpaPath] args:nil];
         
         // 移除垃圾文件
-        [[NSFileManager defaultManager] removeItemAtPath:self.applicationMd5Path error:nil];
+//        [[NSFileManager defaultManager] removeItemAtPath:self.applicationMd5Path error:nil];
 
 //        NSLog(@"%@", self.outputFilePath);
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -632,13 +700,17 @@
     [xmlDs writeToFile:tempEntitlementsPath atomically:YES];
 
     // 提取 TeamName 名称
-    NSString *TeamName = teamName;
     if (teamName.length <= 0)
-        TeamName = [tempEnttilePlist objectForKey:@"TeamName"];
+    {
+        [self toast:@"请选择签名证书"];
+        return;
+    }
+//    if (teamName.length <= 0)
+//        TeamName = [tempEnttilePlist objectForKey:@"TeamName"];
 
     // 对目录进行重签名
     //  codesign -f -s "${PARAM_DEVELOPTEAM}" --entitlements "${_plistPath}" "${_path}"
-    [self.commond runCommand:[NSString stringWithFormat:@"codesign -f -s \"%@\" --entitlements \"%@\" \"%@\" ", TeamName, tempEntitlementsPath, signPath] args:nil];
+    [self.commond runCommand:[NSString stringWithFormat:@"codesign -f -s \"%@\" --entitlements \"%@\" \"%@\" ", teamName, tempEntitlementsPath, signPath] args:nil];
 }
 
 - (NSString *)infoPlitDic2XML:(NSDictionary *)dictionary
@@ -824,6 +896,27 @@
     // 退出软件
     exit(0);
     return NO;
+}
+
+
+#pragma mark - NSComboBoxDataSource, NSComboBoxDelegate
+- (NSInteger)numberOfItemsInComboBox:(NSComboBox *)comboBox
+{
+    return self.signTeamDataList.count;
+}
+
+- (id)comboBox:(NSComboBox *)comboBox objectValueForItemAtIndex:(NSInteger)index
+{
+    NSDictionary *dic = [self.signTeamDataList objectAtIndex:index];
+    
+    return [dic objectForKey:@"label"];
+}
+
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification
+{
+    NSDictionary *item = [self.signTeamDataList objectAtIndex:self.signKeyListCombbox.indexOfSelectedItem];
+    self.signKeyListCombbox.stringValue = [item objectForKey:@"label"];
+    self.signKeyIndeitfyLabel.stringValue = [item objectForKey:@"value"];
 }
 
 

@@ -18,6 +18,8 @@
                 <outlet property="mainContentView" destination="EiT-Mj-1SZ" id="d4Y-2t-wjt"/>
                 <outlet property="mobileProvisionLabel" destination="pCa-5o-1PA" id="9h5-Oy-Gjj"/>
                 <outlet property="reSignBtn" destination="i3E-O1-0FR" id="GxO-1i-j51"/>
+                <outlet property="signKeyIndeitfyLabel" destination="Bsr-CQ-ZPO" id="H2q-lN-BkR"/>
+                <outlet property="signKeyListCombbox" destination="abx-1l-AE1" id="kwZ-K5-9eZ"/>
                 <outlet property="updateMobileProvisionBtn" destination="0Vu-uD-C8F" id="SEf-dA-mTX"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="5mg-M0-Z0G"/>
             </connections>
@@ -26,16 +28,16 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="快速签名工具" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="518" height="460"/>
+            <rect key="contentRect" x="196" y="240" width="518" height="550"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-            <value key="minSize" type="size" width="518" height="460"/>
-            <value key="maxSize" type="size" width="518" height="460"/>
+            <value key="minSize" type="size" width="518" height="550"/>
+            <value key="maxSize" type="size" width="518" height="550"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="518" height="460"/>
+                <rect key="frame" x="0.0" y="0.0" width="518" height="550"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZEi-1c-MCy">
-                        <rect key="frame" x="18" y="409" width="58" height="16"/>
+                        <rect key="frame" x="18" y="489" width="58" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="应用名称" id="ZDr-tz-G5H">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -44,7 +46,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLO-Mm-BrQ">
-                        <rect key="frame" x="32" y="378" width="44" height="16"/>
+                        <rect key="frame" x="32" y="458" width="44" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="版本号" id="W8f-81-P1Q">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -53,7 +55,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WZN-l0-sje">
-                        <rect key="frame" x="81" y="406" width="147" height="21"/>
+                        <rect key="frame" x="81" y="486" width="147" height="21"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="应用名称标题" drawsBackground="YES" id="6SG-8R-Gtw">
                             <font key="font" metaFont="system"/>
@@ -62,7 +64,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yRi-ud-poM">
-                        <rect key="frame" x="82" y="374" width="147" height="21"/>
+                        <rect key="frame" x="82" y="455" width="147" height="21"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="应用版本号" drawsBackground="YES" id="aZF-XR-DWS">
                             <font key="font" metaFont="system"/>
@@ -71,7 +73,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRZ-Ss-f0n">
-                        <rect key="frame" x="18" y="330" width="84" height="16"/>
+                        <rect key="frame" x="20" y="420" width="84" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="应用描述文件" id="cjQ-pS-D9m">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -79,8 +81,26 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XO-5j-iW3">
+                        <rect key="frame" x="18" y="268" width="84" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="签名证书" id="ZdR-8R-dQw">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tsy-NK-CQd">
+                        <rect key="frame" x="18" y="242" width="80" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="key-Identify" id="bN2-sD-rko">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HkM-45-XTe">
-                        <rect key="frame" x="18" y="434" width="58" height="16"/>
+                        <rect key="frame" x="18" y="514" width="58" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="BundleId" id="pp2-Nm-GHw">
                             <font key="font" metaFont="system"/>
@@ -89,7 +109,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mKy-R9-Bfw">
-                        <rect key="frame" x="80" y="434" width="281" height="16"/>
+                        <rect key="frame" x="80" y="514" width="281" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="无" id="BxM-6Y-kGQ">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -98,7 +118,7 @@
                         </textFieldCell>
                     </textField>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B60-Re-wMO">
-                        <rect key="frame" x="20" y="215" width="478" height="96"/>
+                        <rect key="frame" x="20" y="301" width="478" height="96"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Vu-uD-C8F">
@@ -223,17 +243,8 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ihs-Nu-cmy">
-                        <rect key="frame" x="20" y="173" width="84" height="16"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="拓展应用证书" id="ZsM-El-pz5">
-                            <font key="font" usesAppearanceFont="YES"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h9v-Qa-8di">
-                        <rect key="frame" x="14" y="8" width="80" height="32"/>
+                        <rect key="frame" x="14" y="13" width="80" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="重签名" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i3E-O1-0FR">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -241,7 +252,7 @@
                         </buttonCell>
                     </button>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xyw-ZX-Tt1">
-                        <rect key="frame" x="378" y="330" width="120" height="120"/>
+                        <rect key="frame" x="378" y="420" width="120" height="120"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1B-kC-WG7">
@@ -251,6 +262,33 @@
                             </imageView>
                         </subviews>
                     </customView>
+                    <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="abx-1l-AE1">
+                        <rect key="frame" x="20" y="210" width="481" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="3aJ-5T-cax">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </comboBoxCell>
+                    </comboBox>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ihs-Nu-cmy">
+                        <rect key="frame" x="20" y="173" width="111" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="拓展应用描述文件" id="ZsM-El-pz5">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bsr-CQ-ZPO">
+                        <rect key="frame" x="102" y="242" width="398" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" id="W7E-oa-Krc">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <toolbar key="toolbar" implicitIdentifier="BD2D687B-CE86-466D-A11A-E699FD578359" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="pf3-dw-LAQ">
